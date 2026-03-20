@@ -1012,7 +1012,7 @@ class MetaClawAPIServer:
         # Inject skills into system message for main turns
         if self.skill_manager and turn_type == "main":
             messages = self._inject_skills(messages)
-        if self._compress_system_prompt:
+        if self._compress_system_prompt and cached_system:
             logger.info(
                 "[OpenClaw] system prompt cached len=%d",
                 _prompt_len([{"role": "system", "content": cached_system}]),
